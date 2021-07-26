@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: fixed;
+    display: inline;
+    justify-content: space-between;
+    height: 100px;
+    width: 100%;
+    top: 0;
+    background-color: #dadada
+}
+
+li {
+    display: inline-block;
+    list-style: none;
+    justify-content: flex-end;
+}
+
+
+/* <--! .menu { 
+    position: fixed;
+    display: inline-block;
+    right: 20px;
+    top: 20px;
+    list-style: none;
+}*/
