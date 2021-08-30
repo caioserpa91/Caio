@@ -1,68 +1,87 @@
-const tabuleiro = document.querySelector('#Tabuleiro')
+const tabuleiro = document.querySelector('#Tabuleiro');
+const linhas = tabuleiro.querySelectorAll('tr');
 
-const linhas = tabuleiro.querySelectorAll("tr")
 
-linhas.forEach((linha, indexL) => {
+linhas.forEach((linha, indiceL) => {
 
-    const colunas = linha.querySelectorAll("td")
+    const colunas = linha.querySelectorAll('td');
 
-    colunas.forEach((td, indexC) => {
 
-        atribuirBombasAosCampos(indexL, indexC)
+    colunas.forEach((td, indiceC) => {
 
-        const campo = td.querySelectorAll('.campo')[0]
+        const campo = td.querySelectorAll('.campo')[0];
+
+        atribuirBombasAosCampos({
+            campo,
+            indiceL,
+            indiceC,
+        });
+
         campo.addEventListener('click', () => {
-            alert("fui clicado com botão esquerdo")
+            if (campo.className.includes("bomba")) {
+                campo.className = campo.className.replace('bomba', 'explodido')
+                window.alert('perdeu o jogo :(')
+            }
+
         })
 
-        campo.addEventListener('contextmenu', () => {
-            alert("fui clicado com o botão direito")
 
+        campo.addEventListener('click', () => {
             if (!campo.className.includes("aberto")) {
-                if (campo.className.includes("marcado")) {
+                if (campo.className.includes("aberto")) {
                     campo.className = "campo"
                     campo.innerText = ""
                 } else {
+                    campo.className = "campo aberto"
+                    campo.innerText = ""
+                }
+            }
+        })
+
+
+        campo.addEventListener('contextmenu', () => {
+            if (!campo.className.includes("aberto")) {
+                if (campo.className.includes("marcado")) {
+                    campo.className = campo.className.replace(' marcado', '')
+                    campo.innerText = ""
+                } else {
                     campo.className = "campo marcado"
-                    campo.innerText = "M"
+                    campo.innerText = "VV"
                 }
             }
         })
     })
 })
 
-// function getRandom(numero) {
-//     return Math.random(numero);
-// }
 
-// var numeroPronto = getRandom()
-// console.log(numeroPronto)
+function atribuirBombasAosCampos(elemento) {
+    Math.random();
 
-// function atribuirBombasAosCampos(indexL, indexC) {
-//     function getRandom(numero) {
-//         return Math.random(numero);
-//     }
-
-//     var numeroPronto = getRandom()
-
-}
-
-function getRandom(numero) {
-    return Math.random(numero);
-}
-
-var numeroPronto = getRandom()
-console.log(numeroPronto)
-
-function atribuirBombasAosCampos(indexL, indexC) {
-    if (numeroPronto > 0.5) {
-        campo.innerText = "B"
+    if (Math.random() > 0.67) {
+        elemento.campo.innerText = "B"
+        elemento.campo.className = 'campo bomba'
     } else {
-        campo.innerText = "_"
+        elemento.campo.innerText = ""
+        elemento.className = 'campo'
+
     }
 
 }
 
-forEach((campo, ) => {
 
-})
+
+
+
+// function atribuirBombasAosCampos(elemento) {
+//     Math.random();
+
+//     if (Math.random() > 0.67) {
+//         elemento.campo.ClassList.add(".explodido");
+//         elemento.className = 'campo bomba'
+//     } else {
+//         elemento.campo.innerText = ""
+//         elemento.className = 'campo'
+
+//     }
+
+// }

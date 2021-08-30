@@ -15,15 +15,13 @@ main {
 }
 
 .campo {
-    height: 15px;
-    width: 15px;
+    height: 25px;
+    width: 25px;
     background-color: #cccccc;
     /* campo fechado */
 }
 
 .marcado {
-    background-color: burlywood;
-    border-style: inset
     /* campo marcado */
 }
 
@@ -32,13 +30,19 @@ main {
 }
 
 .aberto {
+    /* background-color: green;
     /* campo aberto */
 }
 
 .explodido {
+    background-color: crimson;
     /* campo no qual explodiu a bomba */
 }
 
 .bomba {
     /* campo aberto com bomba */
+}
+
+.safe {
+    background-color: rgb(50, 235, 43);
 }
